@@ -6,6 +6,7 @@ import com.exb.server.client.server.communication.fileservicecommunication.feign
 import com.exb.server.client.server.communication.fileservicecommunication.service.FileComponentI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,6 +24,11 @@ public class FileComponentImpl implements FileComponentI {
     @Override
     public boolean exist() throws IOException {
        return this.fileService.exist("123", "/tmp/download.png");
+    }
+
+    @Override
+    public String upload(String aSessionId, MultipartFile file) throws IOException {
+        return this.fileService.upload(aSessionId, file);
     }
 
     @Override
